@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script type="text/javascript" src="../node_modules1/jQuery/tmp/jquery.js"></script>
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <title>React App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #eee;
+        }
+
+        #content {
+            width: 960px;
+            height: 1200px;
+            background: #fff;
+            margin: auto;
+        }
+
+        #commodity {
+            width: 960px;
+            height: 300px;
+            border-bottom: solid 1px gainsboro;
+        }
+
+        #commodity img {
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+
+        #text {
+            float: right;
+            width: 610px;
+            height: 270px;
+            margin-top: 30px;
+            margin-right: 50px;
+        }
+
+        #text1 {
+            float: right;
+            width: 610px;
+            height: 300px;
+            margin-top: 30px;
+            margin-right: 50px;
+            margin-top: -260px;
+        }
+
+        #name1,
+        #name2,
+        #name3,
+        #name4 {
+            color: black;
+            font-size: 22px;
+        }
+
+        #price1,
+        #price2,
+        #price3,
+        #price4 {
+            color: salmon;
+            font-size: 28px;
+            margin-top: 20px;
+        }
+
+        #price1 span,
+        #price2 span,
+        #price3 span,
+        #price4 span {
+            border: sandybrown 1px solid;
+            color: sandybrown;
+            font-size: 14px;
+        }
+
+        #count1,
+        #count2,
+        #count3,
+        #count4 {
+            margin-top: 20px;
+            color: gray;
+            font-size: 16px;
+        }
+
+        #count1 span,
+        #count2 span,
+        #count3 span,
+        #count4 span {
+            width: 10px;
+            font-size: 24px;
+        }
+
+        #shopping-cart {
+            width: 150px;
+            height: 40px;
+            background-color: sandybrown;
+            color: white;
+            margin-top: 40px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 40px;
+            margin-left: 450px;
+        }
+
+        #account {
+            width: 150px;
+            height: 40px;
+            background-color: rgb(112, 171, 226);
+            color: white;
+            margin-top: 30px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 25px;
+            margin-left: 1000px;
+            margin-bottom: 10px;
+        }
+
+        #hide {
+            width: 270px;
+            height: 190px;
+            background-color: white;
+            color: black;
+            margin-top: -240px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 25px;
+            margin-left: 965px;
+            margin-right: 200px;
+            display: none;
+        }
+
+        #acc {
+            width: 260px;
+            height: 30px;
+            background-image: url(../img/5.png);
+            line-height: 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-left: 5px;
+            text-align: center;
+            margin-top: 8px;
+            margin-top: -10px;
+            background-size: 100% 100%;
+        }
+
+        #tex {
+            width: 270px;
+            height: 150px;
+            font-size: 14px;
+            padding-top: 10px;
+
+        }
+    </style>
+
+
+    <script type="text/babel">
+   var Picture = React.createClass({
+     
+    minus:function(event){
+            var a=document.getElementById("input1");
+              a.value = parseInt(a.value) + 1;
+     },
+
+    add:function(event){
+         var a=document.getElementById("input1");
+         a.value = parseInt(a.value) + 1;
+     },
+
+      minus1:function(event){
+            var a=document.getElementById("input2");
+              a.value = parseInt(a.value) + 1;
+     },
+
+    add1:function(event){
+         var a=document.getElementById("input2");
+         a.value = parseInt(a.value) + 1;
+     },
+
+      minus2:function(event){
+            var a=document.getElementById("input3");
+              a.value = parseInt(a.value) + 1;
+     },
+
+    add2:function(event){
+         var a=document.getElementById("input3");
+         a.value = parseInt(a.value) + 1;
+     },
+
+      minus3:function(event){
+            var a=document.getElementById("input4");
+              a.value = parseInt(a.value) + 1;
+     },
+
+    add3:function(event){
+         var a=document.getElementById("input4");
+         a.value = parseInt(a.value) + 1;
+     },
+
+     aggregate:function(){
+       var a=document.getElementById("hide");
+       var x=document.getElementById("tex");
+       var k=document.getElementById("acc");
+      
+        a.style.display="block";
+       var name1=document.getElementById('name1');
+       var price1=document.getElementById('price1');
+       var count1=document.getElementById('input1');
+
+       var name2=document.getElementById('name2');
+       var price2=document.getElementById('price2');
+       var count2=document.getElementById('input2');
+
+        var name3=document.getElementById('name3');
+       var price3=document.getElementById('price3');
+       var count3=document.getElementById('input3');
+
+        var name4=document.getElementById('name4');
+       var price4=document.getElementById('price4');
+       var count4=document.getElementById('input4');
+         
+       if( a.style.display=="block"){
+       var z=name1.value +"&nbsp &nbsp 数量："+count1.value +"&nbsp件&nbsp &nbsp 小计："+ parseInt(count1.value)*parseInt(price1.value)+"元<br>"
+            +name2.value +"&nbsp &nbsp 数量："+count2.value +"&nbsp件&nbsp &nbsp 小计："+ parseInt(count2.value)*parseInt(price2.value)+"元<br>"
+            +name3.value +"&nbsp &nbsp 数量："+count3.value +"&nbsp件&nbsp &nbsp 小计："+ parseInt(count3.value)*parseInt(price3.value)+"元<br>"
+            +name4.value +"&nbsp &nbsp 数量："+count4.value +"&nbsp件&nbsp &nbsp 小计："+ parseInt(count4.value)*parseInt(price4.value)+"元<br>"
+            +"&nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp总计："+Number(parseInt(count1.value)*parseInt(price1.value)+ parseInt(count2.value)*parseInt(price2.value)+ parseInt(count3.value)*parseInt(price3.value)+parseInt(count4.value)*parseInt(price4.value))+"元";
+           x.innerHTML=z; //将文本放入div中
+          // k.innerHTML="去结算";
+       }
+     },
+     leave:function(){
+             var a=document.getElementById("hide");
+              a.style.display="none";
+            },
+   
+         render: function() {
+           
+           return (
+              <div id="commodity"> 
+               
+                   <img src="../img/1.jpg" width="200px" height="250px" />
+                  <div id="text">
+                    <div id="name1" value="一字肩长裙">女式拉夏贝尔碎花连衣裙女夏季雪纺裙高腰修身一字肩中长裙子</div>
+                    <div id="price1" value="299"> ¥ 299 元&nbsp; &nbsp;<span> 7.5折</span></div>
+                    <div id="count1">数量：<span onClick={this.minus}> - </span><input id="input1" type="text" name="count1" value="0" required/> <sapn onClick={this.add}> + </sapn> </div>
+                    <div id="shopping-cart" onClick={this.add}>加入购物车</div>
+                  </div>
+               <div id="commodity"> 
+                  <img src="../img/2.jpg" width="200px" height="250px" />
+                    <div id="text1">
+                    <div id="name2" value="A字连衣裙">韩版印花拉夏贝尔7m2017秋装新款荷叶边收腰显瘦中长A字连衣裙女</div>
+                    <div id="price2" value=" 299 "> ¥ 299 元&nbsp; &nbsp;<span> 7.5折</span></div>
+                     <div id="count2">数量：<span onClick={this.minus1}> - </span> <input id="input2" type="text" name="count2" value="0" required/><sapn onClick={this.add1}> + </sapn> </div>
+                    <div id="shopping-cart" onClick={this.add1}>加入购物车</div>
+                  </div>
+               </div>
+                <div id="commodity"> 
+                  <img src="../img/3.jpg" width="200px" height="250px" />
+                   <div id="text1">
+                    <div id="name3" value="百搭连衣裙">2018夏装新款丝棉印花百搭显瘦连衣裙 +吊带</div>
+                    <div id="price3" value="265"> ¥ 265 元&nbsp; &nbsp;<span> 3.3折</span></div>
+                     <div id="count3">数量：<span onClick={this.minus2}> - </span> <input id="input3" type="text" name="count3" value="0" required/><sapn onClick={this.add2}> + </sapn> </div>
+                    <div id="shopping-cart" onClick={this.add2}>加入购物车</div>
+                  </div>
+                </div>
+                 <div id="commodity"> 
+                  <img src="../img/4.jpg" width="200px" height="250px" />
+                   <div id="text1">
+                    <div id="name4" value="A字连衣裙">韩版印花拉夏贝尔7m2017秋装新款荷叶边收腰显瘦中长A字连衣裙女</div>
+                    <div id="price4" value="288"> ¥ 288 元&nbsp; &nbsp;<span> 2.5折</span></div>
+                     <div id="count4">数量：<span onClick={this.minus3}> - </span> <input id="input4" type="text" name="count4" value="0"/><sapn onClick={this.add3}> + </sapn> </div>
+                    <div id="shopping-cart" onClick={this.add3}>加入购物车</div>
+                  </div>
+                     
+                   <div id="account" onMouseEnter={this.aggregate} onMouseLeave={this.leave} onClick={this.aggregate}>购物车</div>
+                    <div id="hide" onMouseEnter={this.aggregate} onMouseLeave={this.leave}  >
+                      <div id="tex" ></div>
+                      <div id="acc"></div>
+                    </div>
+        
+                  </div>
+              </div>         
+        );
+         }
+        });
+
+  ReactDOM.render(
+      <Picture/>,
+     document.getElementById('content')
+) ;
+
+window.onload = function () {
+    let addButton = document.getElementById("acc");
+    acc.addEventListener('click', e => {
+        e.preventDefault(); //preventDefault() 方法阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        const ListData = getMovieData("commodity");
+        console.log(ListData);
+        axios.post('http://localhost:3004/list',ListData)
+            .then(function (response) {
+                if (response.data) {
+                    alert("购买成功！");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, false);
+}
+function getMovieData(formId) {
+    const form = document.getElementById(formId);
+    let tag= form.getElementsByTagName('input');
+    var ListData = {};
+    // for (let item of tag) {
+    //    ListData[item.name] = item.value;
+    // }
+    let name1=document.getElementById('name1')
+    console.log(name1.id);
+    let name2=document.getElementById('name2')
+    let name3=document.getElementById('name3')
+    let name4=document.getElementById('name4')
+     let count1=document.getElementById('input1')
+    let count2=document.getElementById('input2')
+    let count3=document.getElementById('input3')
+    let count4=document.getElementById('input4')
+    
+    ListData[name1.id]=name1.value;
+    ListData[count1.name]=count1.value;
+    ListData[name2.id]=name2.value;
+    ListData[count2.name]=count2.value;
+    ListData[name3.id]=name3.value;
+    ListData[count3.name]=count3.value;
+    ListData[name4.id]=name4.value;
+    ListData[count4.name]=count4.value;
+
+    return ListData;
+}
+
+  </script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
